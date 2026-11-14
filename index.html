@@ -42,7 +42,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(6,10,8,.9);backdrop-filter:
 .lang-switch{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:13px;margin-left:14px}
 .lang-btn{background:none;border:0;color:var(--muted);font:inherit;font-weight:700;cursor:pointer;padding:4px 2px}
 .lang-btn.active{color:var(--gold);text-shadow:0 0 10px rgba(163,230,53,.5)}
-.hero{padding:64px 0 30px;background:radial-gradient(900px 480px at 78% 30%,rgba(163,230,53,.13),transparent 60%),radial-gradient(700px 400px at 12% 88%,rgba(74,222,128,.07),transparent 60%)}
+.hero{padding:46px 0 24px;background:radial-gradient(900px 480px at 78% 30%,rgba(163,230,53,.13),transparent 60%),radial-gradient(700px 400px at 12% 88%,rgba(74,222,128,.07),transparent 60%)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
 .kicker{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 0 12px rgba(163,230,53,.6)}
 .hero h1{font-size:62px;line-height:1.02;margin:10px 0 6px;text-transform:uppercase}
@@ -68,7 +68,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(6,10,8,.9);backdrop-filter:
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 14px;text-align:center}
 .stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:23px;color:var(--gold)}
 .stat span{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em}
-section{padding:52px 0}
+section{padding:38px 0}
 .sec-head{max-width:640px;margin-bottom:26px}
 .sec-head h2{font-size:36px;margin-bottom:8px}
 .sec-head p{color:var(--muted)}
@@ -105,6 +105,9 @@ section{padding:52px 0}
 .sealed img{width:100%;max-width:380px;border-radius:18px;display:block;margin:0 auto}
 .sealed p{color:var(--muted);margin-top:10px}
 .hashline{margin-top:14px;font-size:12.5px;color:var(--muted);word-break:break-all;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.agentbox{border:1px solid var(--line);border-radius:12px;background:#05080a;padding:14px 16px}
+.agentbox summary{cursor:pointer;font-weight:700;color:var(--gold)}
+.agentbox pre{margin-top:12px}
 pre{background:#05080a;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;font-size:13px;line-height:1.6;color:#d7e8cd;white-space:pre-wrap}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
 .faq summary{cursor:pointer;font-weight:700}
@@ -268,6 +271,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <h2 data-i18n="agentsH">For agents</h2>
       <p data-i18n="agentsP">Running this for your human? The full machine-readable guide is in <a href="skill.md">skill.md</a> and <a href="llms.txt">llms.txt</a>. The short version:</p>
     </div>
+    <details class="agentbox"><summary data-i18n="agentExpand">Show the full agent prompt</summary>
     <pre id="agentPrompt">You are helping your human claim a Primate Syndicate (PRMD) ape on BNB Smart Chain.
 
 FREE CLAIM — post first, in this exact order:
@@ -297,6 +301,7 @@ PAID MINT — no post needed:
 Call mintPaid(qty) with exactly qty × 0.001 BNB.
 
 Every mint arrives sealed. All apes reveal together when the 7-day window closes. A PRMD token for holders has been announced — no amounts or dates are promised anywhere, so do not invent any.</pre>
+    </details>
     <div style="margin-top:14px"><button class="btn ghost small" id="copyPrompt" data-i18n="copyPrompt">Copy the agent prompt</button></div>
   </div>
 </section>
@@ -361,7 +366,7 @@ en: {
   yourCratesP:"Crates held by the connected wallet. Set a price to list one — the buyer pays you directly, minus the 2.5% market fee.",
   agentsH:"For agents",
   agentsP:"Running this for your human? The full machine-readable guide is in <a href=\"skill.md\">skill.md</a> and <a href=\"llms.txt\">llms.txt</a>. The short version:",
-  copyPrompt:"Copy the agent prompt",
+  copyPrompt:"Copy the agent prompt", agentExpand:"Show the full agent prompt",
   faqH:"Questions",
   faq1q:"Why do I have to post first?", faq1a:"Because the free ape is the announcement. One post per free claim — verified by the gate, enforced by the contract. Paid mints skip it entirely.",
   faq2q:"Can I claim the free one twice?", faq2a:"No. One per wallet, and one X account can only power one claim — both are checked on-chain.",
@@ -426,7 +431,7 @@ zh: {
   yourCratesP:"当前连接钱包所持有的宝箱。设定价格即可挂售——买家会直接向你付款,仅扣除 2.5% 的市场手续费。",
   agentsH:"代理指南",
   agentsP:"在替你的人类操作?完整的机器可读指南见 <a href=\"skill.md\">skill.md</a> 和 <a href=\"llms.txt\">llms.txt</a>。简短版:",
-  copyPrompt:"复制代理提示词",
+  copyPrompt:"复制代理提示词", agentExpand:"显示完整的代理提示词",
   faqH:"常见问题",
   faq1q:"为什么必须先发帖?", faq1a:"因为免费猿猴本身就是公告。每份免费领取对应一篇帖子——由网关核实、由合约强制执行。付费铸造则完全跳过这一步。",
   faq2q:"免费的能领两次吗?", faq2a:"不能。每个钱包限领一只,而且一个 X 账号只能助力一次领取——这两项都会在链上核查。",

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primate Syndicate (PRMD) — 2,500 Syndicate Apes on BNB Chain</title>
+<meta name="description" content="2,500 syndicate apes sealed in vault crates on BNB Smart Chain. First ape free — post first, then claim. Paid mints 0.001 BNB. All reveal at once.">
+<meta property="og:title" content="Primate Syndicate (PRMD)">
+<meta property="og:description" content="2,500 syndicate apes sealed in vault crates. First one free — post first, then claim.">
+<meta property="og:image" content="images/mystery-box.webp">
+<link rel="icon" href="images/mystery-box.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060a08; --panel:#0b120e; --panel2:#0e1712; --line:#1e2f24;
+  --gold:#a3e635; --gold2:#d9f99d; --ember:#fbbf24;
+  --text:#e9f5e4; --muted:#8fa896; --bad:#ff6b5e; --good:#4ade80;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.55}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:url(images/jungle-bg.jpg) center/cover no-repeat}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,10,8,.52),rgba(6,10,8,.74) 55%,rgba(6,10,8,.86))}
+h1,h2,h3,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:.02em;font-weight:700}
+a{color:var(--gold)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(6,10,8,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:22px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:.04em;color:var(--text);text-decoration:none}
+.logo img{width:34px;height:34px;border-radius:9px}
+.logo b{color:var(--gold);font-weight:700;animation:flicker 5.7s linear infinite}
+.nav-links{display:flex;gap:18px;margin-left:auto}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
+.nav-links a:hover{color:var(--gold2)}
+.btn{display:inline-block;background:linear-gradient(180deg,#bef264,var(--gold));color:#0c1503;border:0;border-radius:12px;padding:12px 22px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:transform .08s;box-shadow:0 0 18px rgba(163,230,53,.28)}
+.btn:hover{transform:translateY(-1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold);box-shadow:none}
+.btn.small{padding:9px 16px;font-size:14px}
+#connectBtn{margin-left:8px}
+.lang-switch{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:13px;margin-left:14px}
+.lang-btn{background:none;border:0;color:var(--muted);font:inherit;font-weight:700;cursor:pointer;padding:4px 2px}
+.lang-btn.active{color:var(--gold);text-shadow:0 0 10px rgba(163,230,53,.5)}
+.hero{padding:64px 0 30px;background:radial-gradient(900px 480px at 78% 30%,rgba(163,230,53,.13),transparent 60%),radial-gradient(700px 400px at 12% 88%,rgba(74,222,128,.07),transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+.kicker{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 0 12px rgba(163,230,53,.6)}
+.hero h1{font-size:62px;line-height:1.02;margin:10px 0 6px;text-transform:uppercase}
+.hero h1 span{color:var(--gold2);animation:flicker 4.2s linear infinite}
+.hero .sub{font-size:19px;color:var(--text);max-width:520px}
+.hero .fine{color:var(--muted);margin-top:10px;max-width:520px;font-size:15px}
+.hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.boximg{width:100%;max-width:470px;display:block;margin:0 auto;border-radius:18px;animation:crateGlow 3.4s ease-in-out infinite}
+@keyframes crateGlow{
+  0%,100%{filter:drop-shadow(0 24px 60px rgba(163,230,53,.14))}
+  50%{filter:drop-shadow(0 24px 70px rgba(163,230,53,.30))}
+}
+@keyframes flicker{
+  0%,6.4%,8.2%,40.8%,42.6%,63.8%,65%,100%{opacity:1;text-shadow:0 0 6px rgba(190,242,100,.85),0 0 24px rgba(163,230,53,.55),0 0 52px rgba(163,230,53,.35)}
+  7.2%{opacity:.45;text-shadow:none}
+  41.6%{opacity:.6;text-shadow:0 0 3px rgba(190,242,100,.4)}
+  64.4%{opacity:.75;text-shadow:0 0 4px rgba(190,242,100,.5)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero h1 span,.logo b,.boximg{animation:none}
+}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:38px 0 6px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 14px;text-align:center}
+.stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:23px;color:var(--gold)}
+.stat span{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em}
+section{padding:52px 0}
+.sec-head{max-width:640px;margin-bottom:26px}
+.sec-head h2{font-size:36px;margin-bottom:8px}
+.sec-head p{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.step .n{font-family:'Space Grotesk',sans-serif;color:var(--gold);font-size:15px;letter-spacing:.2em}
+.step h3{font-size:21px;margin:8px 0 6px}
+.step p{color:var(--muted);font-size:14.5px}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
+.panel h3{font-size:23px;margin-bottom:4px}
+.panel .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;color:#0c1503;background:var(--gold);border-radius:999px;padding:3px 10px;margin-bottom:12px;box-shadow:0 0 12px rgba(163,230,53,.35)}
+.panel .tag.dim{background:#12241a;color:var(--gold);border:1px solid var(--line);box-shadow:none}
+.panel p{color:var(--muted);font-size:14.5px}
+.field{margin-top:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
+.field input{width:100%;background:#070d09;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:12px 14px;font-size:15px}
+.field input:focus{outline:1px solid var(--gold)}
+.status{margin-top:12px;font-size:14px;min-height:20px}
+.status.ok{color:var(--good)} .status.err{color:var(--bad)} .status.wait{color:var(--gold2)}
+.qtyrow{display:flex;align-items:center;gap:14px;margin-top:16px}
+.qtybtn{width:42px;height:42px;border-radius:10px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:20px;cursor:pointer}
+.qtyval{font-family:'Space Grotesk',sans-serif;font-size:26px;min-width:44px;text-align:center}
+.costline{margin-top:10px;color:var(--muted);font-size:14.5px}
+.costline b{color:var(--text)}
+.supplyline{margin:22px 0 0;text-align:center;color:var(--muted);font-size:14.5px}
+.supplyline b{color:var(--gold);font-family:'Space Grotesk',sans-serif;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
+.card div{padding:10px 12px;font-size:13.5px;font-weight:600}
+.card div span{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.sealed{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+.sealed img{width:100%;max-width:380px;border-radius:18px;display:block;margin:0 auto}
+.sealed p{color:var(--muted);margin-top:10px}
+.hashline{margin-top:14px;font-size:12.5px;color:var(--muted);word-break:break-all;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+pre{background:#05080a;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;font-size:13px;line-height:1.6;color:#d7e8cd;white-space:pre-wrap}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq p{color:var(--muted);margin-top:8px;font-size:14.5px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);background:#0d1a10;border:1px solid var(--gold);color:var(--text);padding:12px 20px;border-radius:12px;font-size:14.5px;opacity:0;transition:all .3s;z-index:99;max-width:90vw;text-align:center}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+@media(max-width:900px){
+  .hero-grid,.panels,.sealed{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:44px}
+  .nav-links{display:none}
+  .logo{font-size:17px}
+  #connectBtn{padding:8px 12px;font-size:13px}
+  .lang-switch{margin-left:auto}
+}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:8px}
+.mcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.mcard img{width:100%;border-radius:10px;display:block}
+.mcard .mid{font-family:'Space Grotesk',sans-serif;color:var(--gold);font-size:17px;margin:10px 0 2px}
+.mcard .mprice{font-weight:700;font-size:16px}
+.mcard .mseller{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.mrow{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:10px;flex-wrap:wrap}
+.mrow img{width:52px;height:52px;border-radius:8px}
+.mrow .mtitle{font-family:'Space Grotesk',sans-serif;color:var(--gold);font-size:16px}
+.mrow .mstate{color:var(--muted);font-size:13.5px}
+.mrow input{width:110px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:8px 10px;font-size:14px}
+.mrow .spacer{flex:1}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#"><img src="images/mystery-box.webp" alt="">PRIMATE&nbsp;<b>SYNDICATE</b></a>
+    <div class="nav-links">
+      <a href="#how" data-i18n="navHow">How it works</a>
+      <a href="#mint" data-i18n="navMint">Mint</a>
+      <a href="#catalog" data-i18n="navCatalog">Catalog</a>
+      <a href="#market" data-i18n="navMarket">Market</a>
+      <a href="#agents" data-i18n="navAgents">For agents</a>
+      <a href="#faq" data-i18n="navFaq">FAQ</a>
+    </div>
+    <div class="lang-switch"><button class="lang-btn" id="langEn">EN</button><span>|</span><button class="lang-btn" id="langZh">中文</button></div>
+    <button class="btn small" id="connectBtn">Connect Wallet</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">BNB Smart Chain · ERC-721</div>
+      <h1>PRIMATE <span>SYNDICATE</span></h1>
+      <p class="sub" data-i18n="heroSub">2,500 syndicate apes, sealed in vault crates. No one knows which ape waits inside their crate — until every crate opens at once.</p>
+      <p class="fine" data-i18n="heroFine">Your first ape is <b style="color:var(--gold)">free</b> — if you post first. After that, 0.001 BNB each, no post needed.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#mint" data-i18n="ctaClaim">Claim your free ape</a>
+        <a class="btn ghost" href="#catalog" data-i18n="ctaCatalog">See the catalog</a>
+      </div>
+    </div>
+    <div><img class="boximg" src="images/mystery-box.gif" alt="The Primate Syndicate mystery crate"></div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>2,500</b><span data-i18n="stApes">Apes</span></div>
+      <div class="stat"><b data-i18n="stFreeVal">1 free</b><span data-i18n="stPerWallet">Per wallet</span></div>
+      <div class="stat"><b>0.001 BNB</b><span data-i18n="stPaid">Paid mint</span></div>
+      <div class="stat"><b data-i18n="stDaysVal">7 days</b><span data-i18n="stWindow">Mint window</span></div>
+      <div class="stat"><b id="statMinted">—</b><span data-i18n="stSealed">Sealed so far</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="howH">Post first. Then claim.</h2>
+      <p data-i18n="howP">The free ape is earned in the open. Three steps, no exceptions — the contract itself enforces them.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n" data-i18n="step1n">STEP 1</div><h3 data-i18n="step1h">Post the call</h3><p data-i18n="step1p">Share the ready-made post on X. One tap fills it in — you press post.</p></div>
+      <div class="step"><div class="n" data-i18n="step2n">STEP 2</div><h3 data-i18n="step2h">Prove it</h3><p data-i18n="step2p">Paste your post link below. We check it is yours and carries the call.</p></div>
+      <div class="step"><div class="n" data-i18n="step3n">STEP 3</div><h3 data-i18n="step3h">Claim the crate</h3><p data-i18n="step3p">A signed permit unlocks your free claim. One post, one wallet, one ape.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="mint" style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="mintH">Claim yours</h2>
+      <p id="windowLine" data-i18n="windowLine">The syndicate opens tonight, Saturday, 14 November 2026 at 23:30 WIB (UTC+7) — and stays open for exactly 7 days. Then never again.</p>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <span class="tag" data-i18n="freeTag">FREE — POST FIRST</span>
+        <h3 data-i18n="freeH">Your first ape</h3>
+        <p data-i18n="freeP">One per wallet. Your X post is verified before the permit is issued, and the contract checks the permit — nobody skips the line.</p>
+        <div class="field">
+          <button class="btn ghost" id="postBtn" style="width:100%" data-i18n="postBtn">1 · Post on X</button>
+        </div>
+        <div class="field">
+          <label for="postUrl" data-i18n="postLabel">2 · Your post link</label>
+          <input id="postUrl" type="url" placeholder="https://x.com/you/status/…">
+        </div>
+        <div class="field">
+          <button class="btn" id="freeBtn" style="width:100%" data-i18n="freeBtn">3 · Verify &amp; claim free</button>
+        </div>
+        <div class="status" id="freeStatus"></div>
+      </div>
+      <div class="panel">
+        <span class="tag dim" data-i18n="paidTag">PAID — NO POST NEEDED</span>
+        <h3 data-i18n="paidH">More apes</h3>
+        <p data-i18n="paidP">Straight purchase. As many as you want while the window is open and stock remains.</p>
+        <div class="qtyrow">
+          <button class="qtybtn" id="qMinus">−</button>
+          <div class="qtyval" id="qVal">1</div>
+          <button class="qtybtn" id="qPlus">+</button>
+        </div>
+        <div class="costline"><span data-i18n="totalLbl">Total:</span> <b id="costVal">0.001 BNB</b></div>
+        <div class="field">
+          <button class="btn" id="paidBtn" style="width:100%" data-i18n="paidBtn">Mint now</button>
+        </div>
+        <div class="status" id="paidStatus"></div>
+      </div>
+    </div>
+    <p class="supplyline"><b id="supplyVal">— / 2,500</b> <span data-i18n="supplySuffix">apes sealed · every mint arrives as a sealed crate</span></p>
+  </div>
+</section>
+
+<section id="catalog">
+  <div class="wrap">
+    <div style="text-align:center;padding:26px 0 10px">
+      <div class="kicker" data-i18n="catKicker">The Catalog</div>
+      <h2 style="font-size:44px;margin:12px 0 8px" data-i18n="catH">COMING <span style="color:var(--gold)">SOON</span></h2>
+      <p style="color:var(--muted)" data-i18n="catP">Every ape stays sealed until reveal day. The full catalog opens with the crates.</p>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="marketH">The market</h2>
+    </div>
+    <div class="mgrid" id="marketGrid"></div>
+    <div class="status" id="marketStatus"></div>
+    <div style="margin-top:10px"><button class="btn ghost small" id="marketRefresh" data-i18n="refreshBtn">Refresh listings</button></div>
+    <div id="yourBoxes" style="margin-top:36px;display:none">
+      <h3 style="font-family:'Space Grotesk',sans-serif;color:var(--gold);font-size:21px;margin-bottom:6px" data-i18n="yourCrates">Your crates</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0" data-i18n="yourCratesP">Crates held by the connected wallet. Set a price to list one — the buyer pays you directly, minus the 2.5% market fee.</p>
+      <div id="boxList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="agents">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="agentsH">For agents</h2>
+      <p data-i18n="agentsP">Running this for your human? The full machine-readable guide is in <a href="skill.md">skill.md</a> and <a href="llms.txt">llms.txt</a>. The short version:</p>
+    </div>
+    <pre id="agentPrompt">You are helping your human claim a Primate Syndicate (PRMD) ape on BNB Smart Chain.
+
+FREE CLAIM — post first, in this exact order:
+1. Give your human this template to post on X (replace WALLET_CODE with the last 6 hex characters of your wallet address, lowercase):
+
+Joining the Primate Syndicate 🦍
+
+2,500 apes sealed in vault crates on BNB Chain.
+
+First one is free — if you post first.
+
+Open to Agent ID holders and humans alike.
+
+My wallet code: WALLET_CODE
+
+Start here:
+https://primate-syndicate.github.io/primate-syndicate/
+
+#PrimateSyndicate #PRMD #AgentID
+
+One-click: open https://x.com/intent/tweet?text=Joining%20the%20Primate%20Syndicate%20%F0%9F%A6%8D%0A%0A2%2C500%20apes%20sealed%20in%20vault%20crates%20on%20BNB%20Chain.%0A%0AFirst%20one%20is%20free%20%E2%80%94%20if%20you%20post%20first.%0A%0AOpen%20to%20Agent%20ID%20holders%20and%20humans%20alike.%0A%0AMy%20wallet%20code%3A%20WALLET_CODE%0A%0AStart%20here%3A%0Ahttps%3A%2F%2Fprimate-syndicate.github.io%2Fprimate-syndicate%2F%0A%0A%23PrimateSyndicate%20%23PRMD%20%23AgentID (same WALLET_CODE replacement) — the post is pre-filled, your human only presses Post. Then get the post link from them.
+The post must carry two markers: the site link and the wallet code. Any post text carrying both passes; the template is preferred, not mandatory.
+2. Send the wallet address + post link to the gate: POST https://permit-worker.reuniakbarpunk212.workers.dev/prmd {"wallet":"0x…","postUrl":"https://x.com/…/status/…"} — it verifies the post and returns an EIP-712 permit.
+3. Call claimFree(handleHash, deadline, signature) on the NFT contract (address on the site). One free ape per wallet; one X account powers one claim.
+
+PAID MINT — no post needed:
+Call mintPaid(qty) with exactly qty × 0.001 BNB.
+
+Every mint arrives sealed. All apes reveal together when the 7-day window closes. A PRMD token for holders has been announced — no amounts or dates are promised anywhere, so do not invent any.</pre>
+    <div style="margin-top:14px"><button class="btn ghost small" id="copyPrompt" data-i18n="copyPrompt">Copy the agent prompt</button></div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-i18n="faqH">Questions</h2></div>
+    <details><summary data-i18n="faq1q">Why do I have to post first?</summary><p data-i18n="faq1a">Because the free ape is the announcement. One post per free claim — verified by the gate, enforced by the contract. Paid mints skip it entirely.</p></details>
+    <details><summary data-i18n="faq2q">Can I claim the free one twice?</summary><p data-i18n="faq2a">No. One per wallet, and one X account can only power one claim — both are checked on-chain.</p></details>
+    <details><summary data-i18n="faq3q">When do I see my ape?</summary><p data-i18n="faq3a">At reveal, when the mint window closes. Every crate opens at the same moment. Until then you hold the sealed crate — and you can trade it on the built-in market.</p></details>
+    <details><summary data-i18n="faq4q">What happens to unminted apes?</summary><p data-i18n="faq4a">They are never created. When the window closes, minting is closed for good.</p></details>
+    <details><summary data-i18n="faq5q">Is there a PRMD token?</summary><p data-i18n="faq5a">A token for holders has been announced. Nothing else — no amounts, no dates — has been promised.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">PRIMATE SYNDICATE (PRMD) · BNB Smart Chain · By t0mek21.ai</div>
+</footer>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script>
+const CONFIG = {
+  NFT: "0x622E2D50f00E30970c71c7D73b8a4932e86987a8",
+  MARKET: "0xC30Ff62A445cf638508CF056425fE79580Fe13c9",
+  GATE: "https://permit-worker.reuniakbarpunk212.workers.dev/prmd",
+  SITE_URL: "https://primate-syndicate.github.io/primate-syndicate/",
+  RPC: "https://bsc-dataseed.binance.org",
+  PRICE: 0.001,
+  MAX: 2500,
+  START_TS: 1794673800, END_TS: 1795278600,
+  WC_PROJECT_ID: "ff5985647ed78916bed0155d2ff84a1c"
+};
+const LIVE = CONFIG.NFT !== "0x0000000000000000000000000000000000000000";
+
+/* ---------- i18n: one dictionary, EN default, zh = Simplified Chinese ---------- */
+const I18N = {
+en: {
+  navHow:"How it works", navMint:"Mint", navCatalog:"Catalog", navMarket:"Market", navAgents:"For agents", navFaq:"FAQ",
+  connect:"Connect Wallet",
+  heroSub:"2,500 syndicate apes, sealed in vault crates. No one knows which ape waits inside their crate — until every crate opens at once.",
+  heroFine:"Your first ape is <b style=\"color:var(--gold)\">free</b> — if you post first. After that, 0.001 BNB each, no post needed.",
+  ctaClaim:"Claim your free ape", ctaCatalog:"See the catalog",
+  stApes:"Apes", stFreeVal:"1 free", stPerWallet:"Per wallet", stPaid:"Paid mint", stDaysVal:"7 days", stWindow:"Mint window", stSealed:"Sealed so far",
+  howH:"Post first. Then claim.",
+  howP:"The free ape is earned in the open. Three steps, no exceptions — the contract itself enforces them.",
+  step1n:"STEP 1", step1h:"Post the call", step1p:"Share the ready-made post on X. One tap fills it in — you press post.",
+  step2n:"STEP 2", step2h:"Prove it", step2p:"Paste your post link below. We check it is yours and carries the call.",
+  step3n:"STEP 3", step3h:"Claim the crate", step3p:"A signed permit unlocks your free claim. One post, one wallet, one ape.",
+  mintH:"Claim yours",
+  windowLine:"The syndicate opens tonight, Saturday, 14 November 2026 at 23:30 WIB (UTC+7) — and stays open for exactly 7 days. Then never again.",
+  freeTag:"FREE — POST FIRST", freeH:"Your first ape",
+  freeP:"One per wallet. Your X post is verified before the permit is issued, and the contract checks the permit — nobody skips the line.",
+  postBtn:"1 · Post on X", postLabel:"2 · Your post link", freeBtn:"3 · Verify & claim free",
+  paidTag:"PAID — NO POST NEEDED", paidH:"More apes",
+  paidP:"Straight purchase. As many as you want while the window is open and stock remains.",
+  totalLbl:"Total:", paidBtn:"Mint now",
+  supplySuffix:"apes sealed · every mint arrives as a sealed crate",
+  catKicker:"The Catalog", catH:"COMING <span style=\"color:var(--gold)\">SOON</span>",
+  catP:"Every ape stays sealed until reveal day. The full catalog opens with the crates.",
+  marketH:"The market", refreshBtn:"Refresh listings", yourCrates:"Your crates",
+  yourCratesP:"Crates held by the connected wallet. Set a price to list one — the buyer pays you directly, minus the 2.5% market fee.",
+  agentsH:"For agents",
+  agentsP:"Running this for your human? The full machine-readable guide is in <a href=\"skill.md\">skill.md</a> and <a href=\"llms.txt\">llms.txt</a>. The short version:",
+  copyPrompt:"Copy the agent prompt",
+  faqH:"Questions",
+  faq1q:"Why do I have to post first?", faq1a:"Because the free ape is the announcement. One post per free claim — verified by the gate, enforced by the contract. Paid mints skip it entirely.",
+  faq2q:"Can I claim the free one twice?", faq2a:"No. One per wallet, and one X account can only power one claim — both are checked on-chain.",
+  faq3q:"When do I see my ape?", faq3a:"At reveal, when the mint window closes. Every crate opens at the same moment. Until then you hold the sealed crate — and you can trade it on the built-in market.",
+  faq4q:"What happens to unminted apes?", faq4a:"They are never created. When the window closes, minting is closed for good.",
+  faq5q:"Is there a PRMD token?", faq5a:"A token for holders has been announced. Nothing else — no amounts, no dates — has been promised.",
+  jsNotOpen:"The mint is not open yet.",
+  jsNoWallet:"No wallet found — install a wallet or try WalletConnect from a desktop browser.",
+  jsSwitch:"Please switch your wallet to BNB Smart Chain.",
+  jsPasteLink:"Paste your post link first.",
+  jsChecking:"Checking your post…",
+  jsNotVerified:"That post could not be verified.",
+  jsVerified:"Post verified. Claiming your ape…",
+  jsClaimOk:"Sealed. Your crate is in your wallet.",
+  jsClaimRej:"The claim was rejected by the contract.",
+  jsMinting:"Minting…",
+  jsMintOk:"Sealed. Your crate(s) are in your wallet.",
+  jsMintFail:"The mint did not go through.",
+  jsNoCrates:"No crates sealed yet — the first listings appear here once apes are minted.",
+  jsNoListings:"No crates are listed right now. List one of yours below once your wallet is connected.",
+  jsForSaleOne:"{n} crate for sale", jsForSaleMany:"{n} crates for sale",
+  jsBuy:"Buy", jsBuying:"Buying…", jsCancelListing:"Cancel listing", jsCancelling:"Cancelling…",
+  jsBought:"Primate Syndicate #{id} is yours.",
+  jsBuyFail:"The purchase did not go through.",
+  jsCancelOk:"Listing for #{id} cancelled.",
+  jsCancelFail:"Cancel failed.",
+  jsMarketFail:"Could not load the market right now.",
+  jsNoHold:"This wallet holds no Primate Syndicate crates yet.",
+  jsListedAt:"Listed at ", jsNotListed:"Not listed",
+  jsPricePh:"Price in BNB",
+  jsListForSale:"List for sale", jsListing:"Listing…",
+  jsEnterPrice:"Enter a price in BNB first.",
+  jsListedOk:"Primate Syndicate #{id} listed at {v} BNB.",
+  jsListFail:"Listing did not go through.",
+  jsCopied:"Agent prompt copied.",
+  jsCopyFail:"Copy failed — select the text manually."
+},
+zh: {
+  navHow:"玩法说明", navMint:"铸造", navCatalog:"图鉴", navMarket:"市场", navAgents:"代理指南", navFaq:"常见问题",
+  connect:"连接钱包",
+  heroSub:"2,500 只辛迪加猿猴,封存在保险宝箱之中。在所有宝箱同时开启之前,没有人知道自己的箱子里藏着哪只猿猴。",
+  heroFine:"你的第一只猿猴<b style=\"color:var(--gold)\">免费</b>——前提是先发帖。之后每只 0.001 BNB,无需发帖。",
+  ctaClaim:"领取你的免费猿猴", ctaCatalog:"查看图鉴",
+  stApes:"猿猴", stFreeVal:"免费 1 只", stPerWallet:"每个钱包", stPaid:"付费铸造", stDaysVal:"7 天", stWindow:"铸造窗口", stSealed:"已封存",
+  howH:"先发帖,再领取。",
+  howP:"免费猿猴要靠公开行动赢得。三步走,没有例外——合约本身会强制执行。",
+  step1n:"步骤 1", step1h:"发布号召", step1p:"在 X 上分享现成的帖子。一键即可填充内容——你只需按下发布。",
+  step2n:"步骤 2", step2h:"验证帖子", step2p:"把你的帖子链接粘贴到下方。我们会核查它确实属于你,且带有号召内容。",
+  step3n:"步骤 3", step3h:"领取宝箱", step3p:"签名许可将解锁你的免费领取。一篇帖子、一个钱包、一只猿猴。",
+  mintH:"领取你的猿猴",
+  windowLine:"辛迪加将于今晚开启:2026 年 11 月 14 日星期六 23:30(印尼西部时间,UTC+7)——开放正好 7 天。过后永不再开。",
+  freeTag:"免费 — 先发帖", freeH:"你的第一只猿猴",
+  freeP:"每个钱包限领一只。在发放许可之前,你的 X 帖子会被核实,合约也会校验许可——没有人能插队。",
+  postBtn:"1 · 在 X 发帖", postLabel:"2 · 你的帖子链接", freeBtn:"3 · 验证并免费领取",
+  paidTag:"付费 — 无需发帖", paidH:"更多猿猴",
+  paidP:"直接购买。只要窗口开放且库存充足,想买多少都可以。",
+  totalLbl:"总计:", paidBtn:"立即铸造",
+  supplySuffix:"只猿猴已封存 · 每次铸造都以密封宝箱的形式到账",
+  catKicker:"图鉴", catH:"敬请<span style=\"color:var(--gold)\">期待</span>",
+  catP:"每只猿猴在揭晓日之前都保持封存。完整图鉴将随宝箱一同开启。",
+  marketH:"市场", refreshBtn:"刷新挂单", yourCrates:"你的宝箱",
+  yourCratesP:"当前连接钱包所持有的宝箱。设定价格即可挂售——买家会直接向你付款,仅扣除 2.5% 的市场手续费。",
+  agentsH:"代理指南",
+  agentsP:"在替你的人类操作?完整的机器可读指南见 <a href=\"skill.md\">skill.md</a> 和 <a href=\"llms.txt\">llms.txt</a>。简短版:",
+  copyPrompt:"复制代理提示词",
+  faqH:"常见问题",
+  faq1q:"为什么必须先发帖?", faq1a:"因为免费猿猴本身就是公告。每份免费领取对应一篇帖子——由网关核实、由合约强制执行。付费铸造则完全跳过这一步。",
+  faq2q:"免费的能领两次吗?", faq2a:"不能。每个钱包限领一只,而且一个 X 账号只能助力一次领取——这两项都会在链上核查。",
+  faq3q:"什么时候能看到我的猿猴?", faq3a:"在铸造窗口关闭的揭晓时刻。所有宝箱都会在同一瞬间开启。在此之前,你持有的是密封宝箱——可以在内置市场上交易它。",
+  faq4q:"未铸造的猿猴会怎样?", faq4a:"它们永远不会被创建。窗口一旦关闭,铸造将永久结束。",
+  faq5q:"会有 PRMD 代币吗?", faq5a:"已宣布将为持有者推出代币。除此之外——数量、日期——都没有任何承诺。",
+  jsNotOpen:"铸造尚未开启。",
+  jsNoWallet:"未找到钱包——请安装钱包,或在桌面浏览器中尝试 WalletConnect。",
+  jsSwitch:"请将你的钱包切换到 BNB 智能链。",
+  jsPasteLink:"请先粘贴你的帖子链接。",
+  jsChecking:"正在核查你的帖子…",
+  jsNotVerified:"该帖子无法通过核实。",
+  jsVerified:"帖子已核实。正在领取你的猿猴…",
+  jsClaimOk:"已封存。宝箱已进入你的钱包。",
+  jsClaimRej:"领取被合约拒绝。",
+  jsMinting:"正在铸造…",
+  jsMintOk:"已封存。宝箱已进入你的钱包。",
+  jsMintFail:"铸造未成功。",
+  jsNoCrates:"尚无宝箱被封存——猿猴铸造后,第一批挂单会出现在这里。",
+  jsNoListings:"目前没有宝箱挂售。连接钱包后,可以在下方挂售你自己的宝箱。",
+  jsForSaleOne:"{n} 个宝箱在售", jsForSaleMany:"{n} 个宝箱在售",
+  jsBuy:"购买", jsBuying:"购买中…", jsCancelListing:"取消挂售", jsCancelling:"取消中…",
+  jsBought:"Primate Syndicate #{id} 已归你所有。",
+  jsBuyFail:"购买未成功。",
+  jsCancelOk:"#{id} 的挂售已取消。",
+  jsCancelFail:"取消失败。",
+  jsMarketFail:"暂时无法加载市场。",
+  jsNoHold:"此钱包尚无 Primate Syndicate 宝箱。",
+  jsListedAt:"已挂售,价格 ", jsNotListed:"未挂售",
+  jsPricePh:"以 BNB 计的价格",
+  jsListForSale:"挂售", jsListing:"挂售中…",
+  jsEnterPrice:"请先输入以 BNB 计的价格。",
+  jsListedOk:"Primate Syndicate #{id} 已以 {v} BNB 挂售。",
+  jsListFail:"挂售未成功。",
+  jsCopied:"代理提示词已复制。",
+  jsCopyFail:"复制失败——请手动选择文本。"
+}};
+let lang = "en";
+try{ const saved = localStorage.getItem("prmd-lang"); if (saved && I18N[saved]) lang = saved; }catch(e){}
+function t(key, vars){
+  let str = (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
+  if (vars) for (const k in vars) str = str.split("{"+k+"}").join(String(vars[k]));
+  return str;
+}
+function applyLang(){
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.getAttribute("data-i18n")); });
+  const be = document.getElementById("langEn"), bz = document.getElementById("langZh");
+  if (be) be.classList.toggle("active", lang === "en");
+  if (bz) bz.classList.toggle("active", lang === "zh");
+  if (!account) $("connectBtn").textContent = t("connect");
+  if (typeof syncQty === "function") syncQty();
+  if (LIVE) loadMarket();
+}
+function setLang(l){
+  if (!I18N[l]) return;
+  lang = l;
+  try{ localStorage.setItem("prmd-lang", l); }catch(e){}
+  applyLang();
+}
+
+const ABI = [
+  "function totalMinted() view returns (uint256)",
+  "function freeClaimed(address) view returns (bool)",
+  "function claimFree(bytes32 handleHash, uint256 deadline, bytes signature)",
+  "function mintPaid(uint256 qty) payable"
+];
+const NFT_ABI = ABI.concat([
+  "function ownerOf(uint256 tokenId) view returns (address)",
+  "function getApproved(uint256 tokenId) view returns (address)",
+  "function approve(address to, uint256 tokenId)"
+]);
+const MARKET_ABI = [
+  "function listingOf(uint256 tokenId) view returns (address seller, uint256 price, bool active)",
+  "function list(uint256 tokenId, uint256 price)",
+  "function cancelListing(uint256 tokenId)",
+  "function buy(uint256 tokenId) payable"
+];
+function buildTemplate(){
+  const code = account ? account.toLowerCase().slice(-6) : "______";
+  return `Joining the Primate Syndicate 🦍
+
+2,500 apes sealed in vault crates on BNB Chain.
+
+First one is free — if you post first.
+
+Open to Agent ID holders and humans alike.
+
+My wallet code: ${code}
+
+Start here:
+${CONFIG.SITE_URL}
+
+#PrimateSyndicate #PRMD #AgentID`;
+}
+
+let eip1193 = null, account = null;
+const $ = id => document.getElementById(id);
+function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"), 4200); }
+function setStatus(id, msg, cls){ const el=$(id); el.textContent=msg; el.className="status "+(cls||""); }
+
+async function loadWC(){
+  if (window["@walletconnect/ethereum-provider"]) return true;
+  for (const u of ["https://unpkg.com/@walletconnect/ethereum-provider@2.21.0/dist/index.umd.js","https://cdn.jsdelivr.net/npm/@walletconnect/ethereum-provider@2.21.0/dist/index.umd.js"]){
+    try{ await new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src=u; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }); if (window["@walletconnect/ethereum-provider"]) return true; }catch(e){}
+  }
+  return false;
+}
+async function connect(){
+  if (account) return account;
+  if (window.ethereum){
+    eip1193 = window.ethereum;
+  } else {
+    if (!(await loadWC())){ toast(t("jsNoWallet")); return null; }
+    eip1193 = await window["@walletconnect/ethereum-provider"].EthereumProvider.init({ projectId: CONFIG.WC_PROJECT_ID, chains:[56], optionalChains:[56], showQrModal:true, rpcMap:{ 56: CONFIG.RPC } });
+    await eip1193.connect();
+  }
+  const prov = new ethers.BrowserProvider(eip1193);
+  const net = await prov.getNetwork();
+  if (Number(net.chainId) !== 56){
+    try{ await eip1193.request({ method:"wallet_switchEthereumChain", params:[{ chainId:"0x38" }] }); }
+    catch(e){ toast(t("jsSwitch")); return null; }
+  }
+  const signer = await prov.getSigner();
+  account = await signer.getAddress();
+  $("connectBtn").textContent = account.slice(0,6)+"…"+account.slice(-4);
+  refreshSupply();
+  loadMarket();
+  return account;
+}
+$("connectBtn").onclick = connect;
+$("langEn").onclick = () => setLang("en");
+$("langZh").onclick = () => setLang("zh");
+
+async function readContract(){
+  const rpc = new ethers.JsonRpcProvider(CONFIG.RPC);
+  return new ethers.Contract(CONFIG.NFT, ABI, rpc);
+}
+async function writeContract(){
+  if (!(await connect())) return null;
+  const prov = new ethers.BrowserProvider(eip1193);
+  return new ethers.Contract(CONFIG.NFT, ABI, await prov.getSigner());
+}
+async function refreshSupply(){
+  if (!LIVE) return;
+  try{
+    const c = await readContract();
+    const n = Number(await c.totalMinted());
+    $("supplyVal").textContent = n.toLocaleString("en-US")+" / 2,500";
+    $("statMinted").textContent = n.toLocaleString("en-US");
+  }catch(e){}
+}
+refreshSupply();
+
+$("postBtn").onclick = async () => {
+  if (!account){ const a = await connect(); if (!a) return; }
+  window.open("https://x.com/intent/tweet?text="+encodeURIComponent(buildTemplate()), "_blank", "noopener");
+};
+
+$("freeBtn").onclick = async () => {
+  if (!LIVE){ toast(t("jsNotOpen")); return; }
+  const url = $("postUrl").value.trim();
+  if (!url){ setStatus("freeStatus", t("jsPasteLink"), "err"); return; }
+  if (!(await connect())) return;
+  setStatus("freeStatus", t("jsChecking"), "wait");
+  let permit;
+  try{
+    const r = await fetch(CONFIG.GATE, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ wallet: account, postUrl: url }) });
+    permit = await r.json();
+    if (!r.ok || !permit.signature) throw new Error(permit.error || t("jsNotVerified"));
+  }catch(e){ setStatus("freeStatus", e.message || t("jsNotVerified"), "err"); return; }
+  setStatus("freeStatus", t("jsVerified"), "wait");
+  try{
+    const c = await writeContract();
+    const tx = await c.claimFree(permit.handleHash, permit.deadline, permit.signature);
+    await tx.wait();
+    setStatus("freeStatus", t("jsClaimOk"), "ok");
+    refreshSupply(); loadMarket();
+  }catch(e){ setStatus("freeStatus", t("jsClaimRej"), "err"); }
+};
+
+let qty = 1;
+function syncQty(){ $("qVal").textContent = qty; $("costVal").textContent = (qty*CONFIG.PRICE).toFixed(3).replace(/0+$/,"").replace(/\.$/,".0")+" BNB"; }
+$("qMinus").onclick = () => { qty = Math.max(1, qty-1); syncQty(); };
+$("qPlus").onclick = () => { qty = Math.min(50, qty+1); syncQty(); };
+syncQty();
+
+$("paidBtn").onclick = async () => {
+  if (!LIVE){ toast(t("jsNotOpen")); return; }
+  if (!(await connect())) return;
+  setStatus("paidStatus", t("jsMinting"), "wait");
+  try{
+    const c = await writeContract();
+    const tx = await c.mintPaid(qty, { value: ethers.parseEther((qty*CONFIG.PRICE).toString()) });
+    await tx.wait();
+    setStatus("paidStatus", t("jsMintOk"), "ok");
+    refreshSupply(); loadMarket();
+  }catch(e){ setStatus("paidStatus", t("jsMintFail"), "err"); }
+};
+
+/* ---------- market ---------- */
+function fmtBNB(wei){
+  const s = ethers.formatEther(wei);
+  return (s.includes(".") ? s.replace(/0+$/,"").replace(/\.$/,".0") : s) + " BNB";
+}
+async function readMarket(){ return new ethers.Contract(CONFIG.MARKET, MARKET_ABI, new ethers.JsonRpcProvider(CONFIG.RPC)); }
+async function readNFT(){ return new ethers.Contract(CONFIG.NFT, NFT_ABI, new ethers.JsonRpcProvider(CONFIG.RPC)); }
+async function writeMarket(){
+  if (!(await connect())) return null;
+  const prov = new ethers.BrowserProvider(eip1193);
+  return new ethers.Contract(CONFIG.MARKET, MARKET_ABI, await prov.getSigner());
+}
+async function writeNFT(){
+  if (!(await connect())) return null;
+  const prov = new ethers.BrowserProvider(eip1193);
+  return new ethers.Contract(CONFIG.NFT, NFT_ABI, await prov.getSigner());
+}
+async function inChunks(items, size, fn){
+  const out = [];
+  for (let i = 0; i < items.length; i += size){ out.push(...await Promise.all(items.slice(i, i + size).map(fn))); }
+  return out;
+}
+async function loadMarket(){
+  if (!LIVE) return;
+  const grid = $("marketGrid");
+  try{
+    const nft = await readNFT();
+    const mkt = await readMarket();
+    const n = Number(await nft.totalMinted());
+    if (!n){ grid.innerHTML = ""; setStatus("marketStatus", t("jsNoCrates"), ""); return; }
+    const ids = Array.from({length:n}, (_,i)=>i+1);
+    const rows = await inChunks(ids, 25, async id => {
+      try{ const l = await mkt.listingOf(id); return { id, seller: l[0], price: l[1], active: l[2] }; }catch(e){ return null; }
+    });
+    const active = rows.filter(r => r && r.active);
+    if (!active.length){ grid.innerHTML = ""; setStatus("marketStatus", t("jsNoListings"), ""); loadBoxes(); return; }
+    setStatus("marketStatus", t(active.length === 1 ? "jsForSaleOne" : "jsForSaleMany", { n: active.length }), "");
+    grid.innerHTML = active.map(r => {
+      const mine = account && r.seller.toLowerCase() === account.toLowerCase();
+      return `<div class="mcard">
+        <img src="images/mystery-box.webp" alt="Sealed Primate Syndicate crate #${r.id}">
+        <div class="mid">Primate Syndicate #${r.id}</div>
+        <div class="mprice">${fmtBNB(r.price)}</div>
+        ${mine ? `<button class="btn ghost small" data-cancel="${r.id}">${t("jsCancelListing")}</button>` : `<button class="btn small" data-buy="${r.id}" data-price="${r.price.toString()}">${t("jsBuy")}</button>`}
+      </div>`;
+    }).join("");
+    grid.querySelectorAll("[data-buy]").forEach(b => b.onclick = async () => {
+      const id = Number(b.dataset.buy), price = BigInt(b.dataset.price);
+      b.disabled = true; b.textContent = t("jsBuying");
+      try{
+        const m = await writeMarket(); if (!m){ b.disabled=false; b.textContent=t("jsBuy"); return; }
+        const tx = await m.buy(id, { value: price }); await tx.wait();
+        toast(t("jsBought", { id })); loadMarket();
+      }catch(e){ toast(t("jsBuyFail")); b.disabled=false; b.textContent=t("jsBuy"); }
+    });
+    grid.querySelectorAll("[data-cancel]").forEach(b => b.onclick = async () => {
+      const id = Number(b.dataset.cancel);
+      b.disabled = true; b.textContent = t("jsCancelling");
+      try{
+        const m = await writeMarket(); if (!m){ b.disabled=false; b.textContent=t("jsCancelListing"); return; }
+        const tx = await m.cancelListing(id); await tx.wait();
+        toast(t("jsCancelOk", { id })); loadMarket();
+      }catch(e){ toast(t("jsCancelFail")); b.disabled=false; b.textContent=t("jsCancelListing"); }
+    });
+  }catch(e){ setStatus("marketStatus", t("jsMarketFail"), "err"); }
+  loadBoxes();
+}
+async function loadBoxes(){
+  const wrap = $("yourBoxes"), list = $("boxList");
+  if (!account){ wrap.style.display = "none"; return; }
+  try{
+    const nft = await readNFT();
+    const mkt = await readMarket();
+    const n = Number(await nft.totalMinted());
+    const ids = Array.from({length:n}, (_,i)=>i+1);
+    const owners = await inChunks(ids, 25, async id => { try{ return await nft.ownerOf(id); }catch(e){ return null; } });
+    const mine = ids.filter((id,i) => owners[i] && owners[i].toLowerCase() === account.toLowerCase());
+    wrap.style.display = "block";
+    if (!mine.length){ list.innerHTML = `<p style="color:var(--muted)">${t("jsNoHold")}</p>`; return; }
+    const rows = await inChunks(mine, 25, async id => {
+      try{ const l = await mkt.listingOf(id); return { id, price: l[1], active: l[2] }; }catch(e){ return { id, price: 0n, active: false }; }
+    });
+    list.innerHTML = rows.map(r => `<div class="mrow">
+        <img src="images/mystery-box.webp" alt="Sealed Primate Syndicate crate #${r.id}">
+        <div><div class="mtitle">Primate Syndicate #${r.id}</div><div class="mstate">${r.active ? t("jsListedAt") + fmtBNB(r.price) : t("jsNotListed")}</div></div>
+        <div class="spacer"></div>
+        ${r.active
+          ? `<button class="btn ghost small" data-mcancel="${r.id}">${t("jsCancelListing")}</button>`
+          : `<input type="number" min="0" step="0.0005" placeholder="${t("jsPricePh")}" id="price-${r.id}"><button class="btn small" data-list="${r.id}">${t("jsListForSale")}</button>`}
+      </div>`).join("");
+    list.querySelectorAll("[data-list]").forEach(b => b.onclick = async () => {
+      const id = Number(b.dataset.list);
+      const v = $("price-" + id).value.trim();
+      const price = Number(v);
+      if (!v || !(price > 0)){ toast(t("jsEnterPrice")); return; }
+      b.disabled = true; b.textContent = t("jsListing");
+      try{
+        const n = await writeNFT(); if (!n){ b.disabled=false; b.textContent=t("jsListForSale"); return; }
+        const approved = await n.getApproved(id);
+        if (approved.toLowerCase() !== CONFIG.MARKET.toLowerCase()){
+          const atx = await n.approve(CONFIG.MARKET, id); await atx.wait();
+        }
+        const m = await writeMarket(); if (!m){ b.disabled=false; b.textContent=t("jsListForSale"); return; }
+        const tx = await m.list(id, ethers.parseEther(v)); await tx.wait();
+        toast(t("jsListedOk", { id, v })); loadMarket();
+      }catch(e){ toast(t("jsListFail")); b.disabled=false; b.textContent=t("jsListForSale"); }
+    });
+    list.querySelectorAll("[data-mcancel]").forEach(b => b.onclick = async () => {
+      const id = Number(b.dataset.mcancel);
+      b.disabled = true; b.textContent = t("jsCancelling");
+      try{
+        const m = await writeMarket(); if (!m){ b.disabled=false; b.textContent=t("jsCancelListing"); return; }
+        const tx = await m.cancelListing(id); await tx.wait();
+        toast(t("jsCancelOk", { id })); loadMarket();
+      }catch(e){ toast(t("jsCancelFail")); b.disabled=false; b.textContent=t("jsCancelListing"); }
+    });
+  }catch(e){ wrap.style.display = "none"; }
+}
+$("marketRefresh").onclick = loadMarket;
+loadMarket();
+
+applyLang();
+
+$("copyPrompt").onclick = async () => {
+  try{ await navigator.clipboard.writeText($("agentPrompt").textContent); toast(t("jsCopied")); }
+  catch(e){ toast(t("jsCopyFail")); }
+};
+</script>
+</body>
+</html>

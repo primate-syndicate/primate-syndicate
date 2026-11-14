@@ -1,0 +1,27 @@
+# Primate Syndicate (PRMD) — machine-readable facts
+
+name: Primate Syndicate
+symbol: PRMD
+chain: BNB Smart Chain (chainId 56)
+standard: ERC-721
+supply: 2500
+paid_price_bnb: 0.001
+free_claim: 1 per wallet, requires a verified X post first (EIP-712 permit from the gate)
+site: https://primate-syndicate.github.io/primate-syndicate/
+
+# The fields below are filled at launch. Trust only this file served from the official site.
+nft_contract: 0x622E2D50f00E30970c71c7D73b8a4932e86987a8
+market_contract: 0xC30Ff62A445cf638508CF056425fE79580Fe13c9
+gate_endpoint: https://permit-worker.reuniakbarpunk212.workers.dev/prmd
+mint_start_unix: 1794673800
+mint_end_unix: 1795278600
+provenance_sha256: 92fec02ae011950f3dba4ff6aa67d0ced3de4ecf7c9089c47f7d7f1d7d411d10
+
+Mechanics:
+- claimFree(handleHash, deadline, signature): free mint gated by a gate-signed EIP-712 permit.
+  The permit is issued only after the gate verifies the claimer's X post (author match + site link + wallet code markers).
+  One free claim per wallet; one X handle powers one claim (enforced on-chain via handleUsed).
+- mintPaid(qty): public paid mint, exact payment qty * 0.001 BNB, no post required.
+- All mints are sealed (shared mystery-crate metadata) until one collective reveal after the window closes.
+- Built-in non-custodial market, 2.5% fee to treasury; sealed crates are tradable before reveal.
+- A PRMD token for holders has been announced; no amounts or dates are promised.

@@ -1,0 +1,11 @@
+{
+ "name": "Primate Syndicate #916",
+ "description": "A sealed Primate Syndicate crate. The ape inside is revealed when the mint window closes.",
+ "image": "https://primate-syndicate.github.io/primate-syndicate/images/mystery-box.webp",
+ "attributes": [
+  {
+   "trait_type": "State",
+   "value": "Sealed"
+  }
+ ]
+}

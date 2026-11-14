@@ -672,8 +672,8 @@ async function loadMarket(){
     grid.innerHTML = active.map(r => {
       const mine = account && r.seller.toLowerCase() === account.toLowerCase();
       return `<div class="mcard">
-        <img src="images/mystery-box.webp" alt="Sealed Primate Syndicate crate #${r.id}">
-        <div class="mid">Primate Syndicate #${r.id}</div>
+        <img src="images/key.webp" alt="Primate Syndicate key #${r.id}">
+        <div class="mid">Key #${r.id}</div>
         <div class="mprice">${fmtBNB(r.price)}</div>
         ${mine ? `<button class="btn ghost small" data-cancel="${r.id}">${t("jsCancelListing")}</button>` : `<button class="btn small" data-buy="${r.id}" data-price="${r.price.toString()}">${t("jsBuy")}</button>`}
       </div>`;
@@ -715,8 +715,8 @@ async function loadBoxes(){
       try{ const l = await mkt.listingOf(id); return { id, price: l[1], active: l[2] }; }catch(e){ return { id, price: 0n, active: false }; }
     });
     list.innerHTML = rows.map(r => `<div class="mrow">
-        <img src="images/mystery-box.webp" alt="Sealed Primate Syndicate crate #${r.id}">
-        <div><div class="mtitle">Primate Syndicate #${r.id}</div><div class="mstate">${r.active ? t("jsListedAt") + fmtBNB(r.price) : t("jsNotListed")}</div></div>
+        <img src="images/key.webp" alt="Primate Syndicate key #${r.id}">
+        <div><div class="mtitle">Key #${r.id}</div><div class="mstate">${r.active ? t("jsListedAt") + fmtBNB(r.price) : t("jsNotListed")}</div></div>
         <div class="spacer"></div>
         ${r.active
           ? `<button class="btn ghost small" data-mcancel="${r.id}">${t("jsCancelListing")}</button>`
